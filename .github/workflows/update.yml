@@ -12,6 +12,9 @@ on:
 permissions:
   contents: read
 
+env:
+  GH_REPO: ${{ github.repository }}
+
 concurrency:
   group: update-release
   cancel-in-progress: false

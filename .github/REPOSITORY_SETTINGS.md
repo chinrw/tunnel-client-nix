@@ -1,6 +1,6 @@
 # Repository setup
 
-Run `bash scripts/setup-github.sh` from a checkout with repository-admin access. It enables automated PR creation, auto-merge availability, and deletion of merged PR branches. Workflows declare their own least-required permissions; the repository's default token remains read-only.
+Run `GH_REPO=owner/repository bash scripts/setup-github.sh` from a checkout with repository-admin access. Name your fork explicitly because GitHub CLI can otherwise select the upstream repository. It enables automated PR creation, auto-merge availability, and deletion of merged PR branches. Workflows declare their own least-required permissions; the repository's default token remains read-only.
 
 The update workflow validates its candidate with an explicitly called workflow, so it does not need a personal access token to trigger PR checks. Its merge step runs only after all native builds pass and uses `--match-head-commit` to guard against a changed PR. If `main` advances during validation, it leaves the PR open for the next hourly run. Repository protection rules, if added, still apply and may require adapting how update checks are reported.
 
